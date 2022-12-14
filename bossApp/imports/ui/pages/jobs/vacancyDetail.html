@@ -1,0 +1,17 @@
+<template name="vacancyDetail">
+{{#with getOneVacancy}}
+    <div class="container">
+        <div class="signup-form formSecond">
+            <h2>{{vacancyname}}</h2>
+            <h4>{{companyname}}</h4>
+            <span>{{location}}</span>
+<!--            <h5>{{companycategory}}</h5>-->
+            <p>{{aboutcompany}}</p>
+            <p>{{aboutvacancy}}</p>
+            <p>{{jobrecruitment}}</p>
+            <p>{{getCompanyName companycategory}}</p>
+        </div>
+    </div>
+{{/with}}
+
+</template>

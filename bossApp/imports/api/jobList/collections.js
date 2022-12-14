@@ -1,0 +1,1 @@
+export const Joblist = new Mongo.Collection('joblist')

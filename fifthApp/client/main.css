@@ -1,0 +1,50 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.testimonial{
+  height: calc(100vh - 60px);
+}
+.testimonial .registerBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.container{
+  max-width: 1800px!important;
+}
+
+
+.rating-new{
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+}
+.rating-new input{
+  display: none;
+}
+.rating-new label{
+  font-size: 35px;
+  margin: 10px;
+  cursor: pointer;
+  color: #d9d9d6;
+}
+.rating-new label i{
+  margin: 2px;
+}
+.rating-new  [id^="rating"]:checked ~ label{
+  color: #FEC400;
+}
+
+.rating-new > input:not(:checked) ~ label:hover,
+.rating-new > input:not(:checked) ~ label:hover ~ label,
+.rating-new > input:checked~ label:hover,
+.rating-new > input:checked~ label:hover ~ label {
+  opacity: 0.6;
+  color: #FEC400;
+}

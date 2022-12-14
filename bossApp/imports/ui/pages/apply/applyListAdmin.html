@@ -1,0 +1,78 @@
+<template name="applyListAdmin">
+    <div class="container">
+
+        <div class="row">
+            {{#if getAdmin}}
+                {{#each getVacancyApply}}
+                    <div class="col-lg-4">
+                        <div class="card my-2" >
+                            <div class="card-body">
+                                <h5 class="card-title">{{getUsers applyUser}}- User Name</h5>
+                                                            <h6 class="card-subtitle mb-2 text-muted">{{getVacancy vacancyname}}- Vacancy Name</h6>
+                                {{#if getAdmin}}
+                                    <a href="/applyDetail/{{_id}}" class="btn btn-outline-info">Etrafli</a>
+                                    <a href="#" id="btnStatus" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal1">Statusu deyis</a>
+                                {{else}}
+                                    {{#if getStatusName}}
+                                        <span class="text-white py-1 px-2 bg-danger">Rejected</span>
+                                    {{/if}}
+                                    {{#if getStatusAccept}}
+                                        <span class="text-white py-1 px-2 bg-success">Accepted</span>
+                                    {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                {{#each getVacancyApply}}
+                    <div class="col-lg-4">
+                        <div class="card my-2" >
+                            <div class="card-body">
+                                <h5 class="card-title">{{getVacancy vacancyId}}</h5>
+                                <!--                            <h6 class="card-subtitle mb-2 text-muted">{{vacancyname}}</h6>-->
+                                {{#if getAdmin}}
+                                    <a href="/applyDetail/{{_id}}" class="btn btn-outline-info">Etrafli</a>
+                                    <a href="#" id="btnStatus" class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModal1">Statusu deyis</a>
+                                {{else}}
+                                    {{#if compare status '==' '2'}}
+                                        <span class="text-white py-1 px-2 bg-danger">Rejected</span>
+                                    {{/if}}
+                                    {{#if compare status '==' '1'}}
+                                        <span class="text-white py-1 px-2 bg-success">Accepted</span>
+                                    {{/if}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="#" id="submitStatus">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Statusu Deyisin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select name="" id="applyStatus"  class="form-control">
+                        <option value="1">Accept</option>
+                        <option value="2">Reject</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</template>

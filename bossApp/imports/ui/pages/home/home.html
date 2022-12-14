@@ -1,0 +1,28 @@
+<template name="home">
+    <div class="container">
+        <div class="row mt-5">
+            {{#each getVacancies}}
+                <div class="col-sm-6 mb-2">
+                    <form action="#" id="applyForm">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> <a href="/vacancyDetail/{{_id}}">{{this.vacancyname}}</a></h5>
+                            <p class="card-text">{{this.companyname}}</p>
+
+                    {{#unless getAdminstatus}}
+                        {{#if getUserstatus}}
+                            {{#if applyExists}}
+                                <button type="submit"  class="btn btn-success apply">Apply</button>
+                            {{/if}}
+                        {{else}}
+                            <a href="/register"  class="btn btn-success apply">Apply</a>
+                        {{/if}}
+                    {{/unless}}
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>

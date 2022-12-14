@@ -1,0 +1,1 @@
+export const CompanyCategory = new Mongo.Collection('companyCategory');

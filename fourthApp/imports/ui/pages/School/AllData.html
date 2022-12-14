@@ -1,0 +1,31 @@
+
+<template name="AllData">
+    <table class="mt-5 table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Age</th>
+            <th scope="col">Class Name</th>
+            <th scope="col">Class Room</th>
+            <th scope="col">Class Mertebe</th>
+
+        </tr>
+        </thead>
+        <tbody>
+{{#each showStudents}}
+            <tr>
+                <td>{{this.studentName}}</td>
+                <td>{{this.studentSurname}}</td>
+                <td>{{this.studentAge}}</td>
+              {{#with getClass studentClass}}
+                  <td>{{this.clasName}}</td>
+                  <td>{{this.roomName}}</td>
+                  <td>{{this.mertebe}}</td>
+                  {{/with}}
+
+            </tr>
+{{/each}}
+        </tbody>
+    </table>
+</template>

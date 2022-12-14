@@ -1,0 +1,116 @@
+<template name="home">
+    <div class="container">
+        <div class="row">
+            {{#each showProductsTrue}}
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <a href="#">
+                                <img src="{{getImage}}" class="card-img-top" alt="Product">
+                            </a>
+                            <div class="card-body px-2 pb-2 pt-1">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <p class="h4 text-primary">${{productPrice}}</p>
+                                    </div>
+                                    <div>
+                                        <a href="#" class="text-secondary lead" data-toggle="tooltip"
+                                           data-placement="left" title="Compare">
+                                            <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="d-flex align-items-center mb-2">
+                                    {{#each getStars}}
+                                        {{#if compare @index '<' ../avrReview}}
+                                            <i class="fa fa-star text-warning " aria-hidden="true"></i>
+
+                                        {{else}}
+                                            <i class="fa fa-star text-secondary" aria-hidden="true"></i>
+                                        {{/if}}
+                                    {{/each}}
+                                </p>
+                                <p class="mb-0">
+                                    <strong>
+                                        <a href="#" class="text-secondary">{{productName}}</a>
+                                    </strong>
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    {{#if getUser}}
+                                        <div class="col px-0 mr-2">
+                                            <button class="btn btn-outline-primary btn-block" id="addReview"
+                                                    data-toggle="modal" data-target="#exampleModal">
+                                                Add Review
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    {{/if}}
+                                    <div class="">
+                                        <a href="/productDetail/{{_id}}" class="btn btn-outline-success"
+                                           data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                                            Read review
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            {{/each}}
+        </div>
+
+    </div>
+    <!-- Modal -->
+    {{#each showProductsTrue}}
+        {{#with getOpenModal }}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">{{productName}}-i qiymetlendirin</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <form action="#" id="reviewForm">
+
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="">Rate</label>
+                                </div>
+                                <div class="rating-new">
+                                    <input type="radio" id="rating1" name="rating"
+                                           value="5"/><label for="rating1">
+                                    <i class="fa fa-star"></i></label>
+                                    <input type="radio" id="rating2" name="rating"
+                                           value="4"/><label for="rating2"><i
+                                        class="fa fa-star"></i></label>
+                                    <input type="radio" id="rating3" name="rating"
+                                           value="3"/><label for="rating3"><i
+                                        class="fa fa-star"></i></label>
+                                    <input type="radio" id="rating4" name="rating"
+                                           value="2"/><label for="rating4"><i
+                                        class="fa fa-star"></i></label>
+                                    <input type="radio" id="rating5" name="rating"
+                                           value="1"/><label for="rating5"><i
+                                        class="fa fa-star"></i></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Review</label>
+                                <textarea name="reviewText" class="form-control"></textarea>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {{/with}}
+    {{/each}}
+</template>

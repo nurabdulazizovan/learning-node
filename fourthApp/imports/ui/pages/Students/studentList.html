@@ -1,0 +1,82 @@
+<template name="studentList">
+
+  <div class="my-3">
+    <a href="/addStudent" class="btn btn-primary">Add Student</a>
+  </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Student Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+              <th scope="col">Age</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each showStudents}}
+          <tr>
+            <th scope="row"><img style="width: 100px; object-fit: cover; height: 100px;" src="{{getImage}}" alt=""></th>
+            <td>{{this.studentName}}</td>
+            <td>{{this.studentSurname}}</td>
+            <td>{{this.studentAge}}</td>
+            <td>
+                <button id="edit" class="btn btn-warning" type="button"   data-toggle="modal" data-target="#exampleModalCenter">edit</button>
+                <button class="btn btn-danger" id="delete">delete</button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{#each showStudents  }}
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" id="submitStudent">
+                        {{#with editNew}}
+                        <!--        <div class="form-group">-->
+                        <!--            <label for="">Student Id</label>-->
+                        <!--            <input type="number" class="form-control" name="studentId" required>-->
+                        <!--        </div>-->
+                        <div class="form-group">
+                            <label for="">Student Name</label>
+                            <input type="text" class="form-control" value="{{this.studentName}}" name="studentName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Student Surname </label>
+                            <input type="text" class="form-control" name="studentSurname" value="{{this.studentSurname}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Student Age</label>
+                            <input type="text" class="form-control" name="studentAge" value="{{this.studentAge}}" required>
+                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <label for="">Student Class</label>-->
+<!--                            <select name="xxx" id="studentClass" class="form-control">-->
+<!--                                {{#each showClassList}} <option value="{{this.clasName}}">{{this.clasName}}</option>{{/each}}-->
+<!--                            </select>-->
+<!--                        </div>-->
+                        <div class="form-group">
+                            <button class="btn btn-success">Save</button>
+                        </div>
+                        {{/with}}
+                    </form>
+
+                </div>
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                    <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</template>

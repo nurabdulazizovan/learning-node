@@ -1,0 +1,34 @@
+<template name="productDetail">
+    {{#with getOneProduct}}
+        <img src="{{getImage}}" alt="">
+        <h4>{{productPrice}}$</h4>
+        <p class="d-flex align-items-center mb-2">
+            {{#each getStars}}
+                {{#if compare @index '<' ../avrReview}}
+                    <i class="fa fa-star text-warning " aria-hidden="true"></i>
+                {{else}}
+                    <i class="fa fa-star text-secondary" aria-hidden="true"></i>
+                {{/if}}
+            {{/each}}
+        </p>
+        <h1>{{productName}}</h1>
+        <p>{{productDescription}}</p>
+
+        {{#each getReviews}}
+            <hr>
+            <p>{{reviewText}}</p>
+            {{#each getSingleStar}}
+                {{#if compare @index '<' ../rating}}
+                    <i class="fa fa-star text-warning " aria-hidden="true"></i>
+
+                {{else}}
+                    <i class="fa fa-star text-secondary" aria-hidden="true"></i>
+                {{/if}}
+            {{/each}}
+            <hr>
+        {{/each}}
+    {{/with}}
+
+
+
+</template>

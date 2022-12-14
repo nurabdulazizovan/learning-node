@@ -1,0 +1,31 @@
+<template name="classList">
+
+  <div class="my-3 ">
+    <a href="/addClass" class="btn btn-primary">Add Class</a>
+  </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ClassId</th>
+            <th scope="col">Classname</th>
+            <th scope="col">Room </th>
+            <th scope="col">Mertebe</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each showTodos}}
+          <tr>
+            <th scope="row">{{this.classId}}</th>
+            <td>{{this.clasName}}</td>
+            <td>{{this.roomName}}</td>
+            <td>{{this.mertebe}}</td>
+            <td>
+                <a href="/editClass/{{_id}}" class="btn btn-warning ">edit</a>
+                <button class="btn btn-danger" id="delete">delete</button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+</template>

@@ -1,0 +1,23 @@
+<template name="editClass">
+{{#with getOneTodo}}
+    <div class="container">
+        <form action="" id="submitClassx">
+            <div class="form-group">
+                <label for="">Class Name</label>
+                <input type="text" class="form-control" value="{{clasName}}" name="clasName">
+            </div>
+            <div class="form-group">
+                <label for="">Room </label>
+                <input type="text" class="form-control" name="roomName" value="{{roomName}}">
+            </div>
+            <div class="form-group">
+                <label for="">Mertebe</label>
+                <input type="text" class="form-control" name="Mertebe" value="{{mertebe}}">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+{{/with}}
+</template>
